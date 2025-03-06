@@ -2,10 +2,11 @@ import javax.swing.JOptionPane;
 public class Exercicio10{
     static public void main(String[] abc){
         
-        int ValorCarro = 15000;
+        double ValorCarro;
+        ValorCarro = Double.parseDouble(JOptionPane.showInputDialog("Digite o valor do carro: "));        
 
-        int PorcentagemDistruibuidor = ValorCarro * 28 / 100;
-        int PorcentagemImpostos = ValorCarro * 45 / 100;
+        double PorcentagemDistruibuidor = ValorCarro * 28 / 100;
+        double PorcentagemImpostos = ValorCarro * 45 / 100;
 
         ValorCarro = ValorCarro + PorcentagemDistruibuidor + PorcentagemImpostos;
 
