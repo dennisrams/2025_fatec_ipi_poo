@@ -3,7 +3,7 @@ import java.util.Random;
 
 public class Personagem{
 
-    private String nome;
+    String nome;
     private String [] possiveisNomes = {"Steve", "Alex", "Mark"};
     private int energia;
     private int fome;
@@ -16,6 +16,10 @@ public class Personagem{
         sono = 0;
     }
     
+    public Personagem() {
+        //TODO Auto-generated constructor stub
+    }
+
     private String obterNomeAleatorio(){
     var gerador = new Random();
     return possiveisNomes[gerador.nextInt(possiveisNomes.length)];

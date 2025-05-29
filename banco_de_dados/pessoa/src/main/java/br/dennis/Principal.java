@@ -1,5 +1,6 @@
 package br.dennis;
 
+import javax.print.attribute.standard.JobHoldUntil;
 import javax.swing.JOptionPane;
 
 public class Principal {
@@ -10,20 +11,59 @@ public class Principal {
         op = Integer.parseInt(JOptionPane.showInputDialog(menu));
         switch (op) {
             case 1:{
-            
-            }break;
+                try{
+                    var nome = JOptionPane.showInputDialog("Nome: ");
+                    var fone = JOptionPane.showInputDialog("Fone: ");
+                    var email = JOptionPane.showInputDialog("Email: ");
+                    var pessoa = new Pessoa(nome, fone, email);
+                    var dao = new PessoaDAO();
+                    dao.cadastrar(pessoa);
+                    JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
+                }catch (Exception e){
+                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Tente novamente mais tarde..."); 
+                };
+            break;
+            }
 
             case 2:{
-
-            }break;
+                try{
+                    var nome = JOptionPane.showInputDialog("Nome?");
+                    var fone = JOptionPane.showInputDialog("Fone?");
+                    var email = JOptionPane.showInputDialog("Email?");
+                    var codigo = Integer.parseInt(JOptionPane.showInputDialog("Código?"));
+                    var pessoa = new Pessoa(codigo, nome, fone, email);
+                    var dao = new PessoaDAO();
+                    dao.atualizar(pessoa);
+                    JOptionPane.showMessageDialog(null, "Atualização bem-sucedida.");
+                }
+                catch(Exception e){
+                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Sistema indisponivel");
+                }
+                break;
+            }
 
             case 3:{
 
-            }break;
+            break;
+            }
 
             case 4:{
-
-            }break;
+                try{
+                    var sb = new StringBuilder("");
+                    for(Pessoa p : new PessoaDAO().listar()){
+                        sb.append(p). append("\n");
+                    }
+                    JOptionPane.showMessageDialog(null, sb);
+                    
+                }
+                catch(Exception e){
+                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Indisponível");
+                }
+                break;
+            }
 
             default: break;
         }
